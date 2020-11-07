@@ -1,0 +1,23 @@
+{
+  "name": "nodechatapp",
+  "version": "1.0.0",
+  "description": "chat application",
+  "main": "server.js",
+  "scripts": {
+    "test": "jasmine",
+    "start": "node server.js"
+  },
+  "author": "saurabh jha",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13",
+    "socket.io": "^3.0.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.6.3",
+    "request": "^2.88.2"
+  }
+}
