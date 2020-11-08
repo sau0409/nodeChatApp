@@ -19,7 +19,7 @@ const app = new Vue({
   methods: {
     async getMessages() {
       try {
-        let result = await axios.get("http://localhost:3000/api/get/messages");
+        let result = await axios.get("https://warm-earth-32530.herokuapp.com/api/get/messages");
         result.data.forEach((el) => {
           this.messages.push(el);
         });
@@ -30,7 +30,7 @@ const app = new Vue({
     },
     async postMessage(msg) {
       try {
-        await axios.post("http://localhost:3000/api/post/message", msg);
+        await axios.post("https://warm-earth-32530.herokuapp.com//api/post/message", msg);
       } catch (err) {
         console.log(err);
       }
