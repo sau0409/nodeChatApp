@@ -36,4 +36,4 @@ io.on("connection", (socket)=> {
 });
 
 //add listner to node server
-const server = http.listen(3000, ()=> console.log('server started on port '+ server.address().port));
+const server = http.listen(process.env.PORT || 3000, ()=> console.log('server started on port '+ server.address().port));
