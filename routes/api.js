@@ -7,7 +7,7 @@ const messages = require("../models/message");
 //const dbURL = "mongodb+srv://node_chat_app:q1w2e3r4t5y6@cluster0.lpzbb.mongodb.net/nodechatapp?retryWrites=true&w=majority"
 
 router.get("/check", (req, res) => res.status(200).send(req.body));
-
+console.log(process.env.MongoDB_URI);
 //connect to mongodb
 mongoose.connect(
   process.env.MongoDB_URI || 'mongodb://localhost:27017/chatapp',
