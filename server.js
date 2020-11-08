@@ -27,8 +27,8 @@ app.use(express.static(__dirname+'/public/'));
 //app.get(/.*/, (req,res)=> res.sendFile(__dirname+'/public/index.html'));
 
 app.get(/.*/, (req, res)=> {
-    res.sendStatus(404);
-})
+    res.sendFile(__dirname+'/public/error/');
+});
 
 //listner to new connection
 io.on("connection", (socket)=> {
