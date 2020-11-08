@@ -7,7 +7,7 @@ const messages = require("../models/message");
 const dbURL = "mongodb+srv://node_chat_app:q1w2e3r4t5y6@cluster0.lpzbb.mongodb.net/nodechatapp?retryWrites=true&w=majority"
 
 router.get("/check", (req, res) => res.status(200).send(req.body));
-console.log(process.env.MongoDB_URI);
+console.log(process.env.PORT);
 //connect to mongodb
 mongoose.connect(
   process.env.MongoDB_URI || dbURL,
@@ -38,6 +38,7 @@ router.get("/get/messages", async (req, res) => {
 
 //post messages
 router.post("/post/message", async (req, res) => {
+  console.log("post message received");
   try {
     //save message to mongo
     const message = new messages(req.body);
@@ -50,7 +51,7 @@ router.post("/post/message", async (req, res) => {
       //delete entry from mongo
       await messages.deleteOne({ _id: badMessage._id });
     } else {
-
+      console.log('triggering emit');
       //emitting event to client to update messages
       req.io.emit("messageEvent", req.body);
       res.status(200).send("message posted");

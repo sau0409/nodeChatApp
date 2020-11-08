@@ -19,27 +19,41 @@ const app = new Vue({
   methods: {
     async getMessages() {
       try {
-        let result = await axios.get("https://warm-earth-32530.herokuapp.com/api/get/messages");
+        let result = await axios.get(`${this.url}/api/get/messages`);
         result.data.forEach((el) => {
           this.messages.push(el);
         });
-        console.log(this.messages);
+        console.log("get message triggered");
       } catch (err) {
         console.log(err);
       }
     },
     async postMessage(msg) {
       try {
-        await axios.post("https://warm-earth-32530.herokuapp.com//api/post/message", msg);
+        console.log("post message triggered");
+        await axios.post(`${this.url}/api/post/message`, msg);
       } catch (err) {
         console.log(err);
       }
     },
     addMessage(message) {
+      console.log("add message triggered");
       this.messages.push(message);
     },
   },
   created() {
+    console.log(window.location.hostname);
     this.getMessages();
+    
   },
+  computed: {
+    url() {
+      if(window.location.hostname !== "localhost") {
+        return "https://warm-earth-32530.herokuapp.com"
+      }
+      else {
+        return "http://localhost:3000"
+      }
+    }
+  }
 });
